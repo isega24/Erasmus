@@ -20,8 +20,47 @@
  	
  	\section{Wiresharck: Network Monitoring Tool}
  	
- 	Wireshark is a powerfull tool which can 
+ 	Wireshark is a powerfull tool which can show information about the network traffic, which means to see all packages that goes througth your computer. Using this tool you can see some risky information from the users of the network, or detecting an attack to a server. Let's see an example:\\
  	
- 	\subsection{Initial description.}
+ 	\begin{itemize}
+ 		\item The scenario will be as it follows. My computer is sharing internet and it has my phone conected. We are going to start sniffing the net traffic(wlan0) and see what my phone is doing...\\
+ 		
+ 		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.7\linewidth]{Wireshark_start_page}
+			\caption[Wireshark Start page]{}
+			\label{fig:Wireshark_start_page}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.7\linewidth]{Wireshark_Sniffing}
+			\caption[Sniffed packages]{}
+			\label{fig:Wireshark_Sniffing}
+		\end{figure}
+
+		\item Now we will see which information could we take. Our network gives directions from 10.42.0.0/24, so we will look for this ips. With a simple nmap scanning, we notice there are three ips connected, one of them is the router(my computer), one of them should be my phone and the other one must be one of my friends phone. We are not going to look for what he is doing, so pay attention to my phone(.32 ip). Also, we want to know what is this phone looking, for example, on internet(http packages):\\
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.7\linewidth]{Wireshark_lookingFor}
+			\caption[Wireshark commands]{}
+			\label{fig:Wireshark_lookingFor}
+		\end{figure}
+		
+		\item If we follow the TCP Stream of the http package with the "GET" method, that is what we see:\\
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.7\linewidth]{Wireshark_TCPStream}
+			\caption[Wireshark TCP Stream]{}
+			\label{fig:Wireshark_TCPStream}
+		\end{figure}
+		
+		\item We can see information of not only the Web page the user has visited, we can also see the user hardware.
+
+ 	\end{itemize}
+ 	
+ 	That is just like the "Hello World" for Wiresharsk.
  	
  \end{document}
