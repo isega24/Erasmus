@@ -1,4 +1,0 @@
-first: first.cpp
-		g++ first.cpp -o first -lGL -lglut -lGLU -lSDL -lSDLmain
-clean:
-		rm first first.o
