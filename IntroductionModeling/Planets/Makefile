@@ -18,7 +18,7 @@ all:$(PROGRAM)
 
 git:
 	git add -A
-	git commit -m "Modifications"
+	git commit -m "Planets program modifications"
 	git push
 
 
