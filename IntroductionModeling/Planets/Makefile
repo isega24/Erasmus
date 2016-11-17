@@ -15,6 +15,11 @@ all:$(PROGRAM)
 	echo Execution of the program:
 	$(PROGRAM) ./txt/example1.txt
 
+git:
+	git add -A
+	git commit -m "Modifications"
+	git push
+
 $(PROGRAM): $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
 

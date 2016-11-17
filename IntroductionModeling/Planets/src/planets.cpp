@@ -6,6 +6,23 @@
 
 using namespace std;
 
+static double * body_mass, * positionX, * nextPositionX, * positionY, * nextPositionY,
+              * velocityX, * nextVelocityX, * velocityY, * nextVelocityY;
+
+static int n_steps, accuracy, n_bodies;
+
+double [2] calcGForce(int j){
+  double G[2] = {0,0};
+  double Gi = 0;
+  for(int i = 0; i < n_bodies){
+    if(i != j){
+      // Module of the force. 
+      Gi = body_mass[i]*body_mass[j]/(((positionX[i]-positionX[j])^2+
+                                      (positionY[i]-positionY[j])^2) ^(1.0/2);
+    }
+  }
+}
+
 int main(int argc, char const *argv[]) {
 
   if(argc < 2){
@@ -18,7 +35,7 @@ int main(int argc, char const *argv[]) {
   inputFile.open(argv[1]);
 
   // Initialice this three variables with the file information
-  int n_steps, accuracy, n_bodies;
+
   char buffer[50];
   inputFile.getline(buffer,0,' ');
   n_steps = atoi(buffer);
@@ -29,15 +46,15 @@ int main(int argc, char const *argv[]) {
 
   // Initialice the important vectors.
 
-  static double * body_mass = new double [n_bodies];
-  static double * positionX = new double [n_bodies];
-  static double * nextPositionX = new double [n_bodies];
-  static double * positionY = new double [n_bodies];
-  static double * nextPositionY = new double [n_bodies];
-  static double * velocityX = new double [n_bodies];
-  static double * nextVelocityX = new double [n_bodies];
-  static double * velocityY = new double [n_bodies];
-  static double * nextVelocityY = new double [n_bodies];
+  body_mass = new double [n_bodies];
+  positionX = new double [n_bodies];
+  nextPositionX = new double [n_bodies];
+  positionY = new double [n_bodies];
+  nextPositionY = new double [n_bodies];
+  velocityX = new double [n_bodies];
+  nextVelocityX = new double [n_bodies];
+  velocityY = new double [n_bodies];
+  nextVelocityY = new double [n_bodies];
 
   // Getting the information of the file of each body.
 
@@ -53,6 +70,10 @@ int main(int argc, char const *argv[]) {
     inputFile.getline(buffer,0,'\n');
     velocityY[i] = atof(buffer);
   }
+
+
+
+
 
 
 
