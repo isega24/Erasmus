@@ -17,6 +17,7 @@ PAINT=paint.py
 all:$(PROGRAM)
 
 git:
+	make clean
 	git add -A
 	git commit -m "Planets program modifications"
 	git push
@@ -35,4 +36,4 @@ $(OBJ)/%.o : $(SRC)/%.cpp
 
 
 clean:
-	rm $(BIN)/* $(OBJ)/*
+	rm $(BIN)/* $(OBJ)/* $(RES)/*
